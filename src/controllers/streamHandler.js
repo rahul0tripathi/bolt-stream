@@ -137,7 +137,7 @@ stream._startStream = async (req, res) => {
   }
 };
 stream._testStreamRoute = async (req, res) => {
-  res.send('hello From Stream Server @ Leauge Of Crusaders Ⓒ 2020-2021');
+  res.send('hello from BOLT ⚡ server');
 };
 stream._stopStream = async (req, res) => {
   if (req.params._id == streamId) {
