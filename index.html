@@ -1,0 +1,62 @@
+<!-- HTML for static distribution bundle build -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Swagger UI</title>
+    <link rel="stylesheet" type="text/css" href="./swagger-ui.css" />
+    <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16" />
+    <style>
+      html
+      {
+        box-sizing: border-box;
+        overflow: -moz-scrollbars-vertical;
+        overflow-y: scroll;
+      }
+
+      *,
+      *:before,
+      *:after
+      {
+        box-sizing: inherit;
+      }
+
+      body
+      {
+        margin:0;
+        background: #fafafa;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="swagger-ui"></div>
+
+    <script src="./swagger-ui-bundle.js" charset="UTF-8"> </script>
+    <script src="./swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
+    <script>
+    window.onload = function() {
+      // Begin Swagger UI call region
+      const ui = SwaggerUIBundle({
+        spec: JSON.parse(
+            '{"swagger":"2.0","info":{"version":"1.0.0","title":"BoltStream","description":"live media streaming over web. \\n powered by HLS and RTMP"},"host":"localhost:3000","basePath":"/","tags":[],"schemes":["http"],"consumes":[],"produces":[],"paths":{"/start_stream":{"post":{"tags":[],"description":"Start a stream using the generated stream-id.","parameters":[{"name":"obj","in":"body","schema":{"type":"object","properties":{"copy":{"type":"boolean","example":"true"},"streamId":{"type":"string","example":"qKdi3cten"}}}}],"responses":{"200":{"description":"OK","schema":{"type":"object","properties":{"_updated":{"type":"integer","format":"int64","example":"1634759751774"},"_version":{"type":"integer","format":"int32","example":"2"},"data":{"type":"object","properties":{"id":{"type":"string","example":"qKdi3cten"},"exec":{"type":"string","example":"ffmpeg -i rtmp://localhost:1935/live/qKdi3cten -y -c:v copy -tune zerolatency -movflags +faststart -c:a copy -strict -2 -crf 18 -preset ultrafast -hls_time 10 -hls_wrap 10 -start_number 1 /Users/test/Desktop/stream-server/streams/qKdi3cten/output.M3U8"},"status":{"type":"boolean"},"startTime":{"type":"integer","format":"int64","example":"1634759751774"},"endTime":{"type":"string","format":"nullable"}}}}}},"500":{"description":"INTERNAL SERVER ERROR","schema":{"type":"string","example":"invalid dataset found"}}}}},"/{_id}/stop_stream":{"get":{"tags":[],"description":"Stop a already running stream using stream-id.","parameters":[{"name":"_id","in":"path","required":true,"type":"string"}],"responses":{"200":{"description":"OK"}}}},"/create_stream":{"post":{"tags":[],"description":"create a new stream and get the stream keys to stream to.","parameters":[],"responses":{"200":{"description":"OK","schema":{"type":"object","properties":{"_updated":{"type":"integer","format":"int64","example":"1634758737695"},"_version":{"type":"integer","format":"int32","example":"1"},"data":{"type":"object","properties":{"id":{"type":"string","example":"qKdi3cten"},"exec":{"type":"string","format":"nullable"},"status":{"type":"boolean"},"created":{"type":"integer","format":"int64","example":"1634758737695"},"startTime":{"type":"string","format":"nullable"},"endTime":{"type":"string","format":"nullable"}}}}}}}}},"/test_stream_server":{"get":{"tags":[],"description":"","parameters":[],"responses":{"200":{"description":"OK"}}}}},"definitions":{}}'
+          ),
+        dom_id: '#swagger-ui',
+        deepLinking: true,
+        presets: [
+          SwaggerUIBundle.presets.apis,
+          SwaggerUIStandalonePreset
+        ],
+        plugins: [
+          SwaggerUIBundle.plugins.DownloadUrl
+        ],
+        layout: "StandaloneLayout"
+      });
+      // End Swagger UI call region
+
+      window.ui = ui;
+    };
+  </script>
+  </body>
+</html>
