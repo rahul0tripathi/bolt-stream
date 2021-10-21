@@ -2,14 +2,15 @@
   "name": "rmtp-server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "stream-client.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./stream-client.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": ">=0.21.2",
     "body-parser": "^1.19.0",
     "chalk": "^3.0.0",
     "cors": "^2.8.5",

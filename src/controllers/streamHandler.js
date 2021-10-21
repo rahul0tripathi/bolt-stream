@@ -141,7 +141,7 @@ stream._testStreamRoute = async (req, res) => {
 };
 stream._stopStream = async (req, res) => {
   if (req.params._id == streamId) {
-    console.log(_ffmpegProcess);
+    // console.log(_ffmpegProcess);
     await _ffmpegProcess.kill('SIGINT');
     await removeDir(
       path.join(__dirname + `../../../streams/${req.params._id}`)
