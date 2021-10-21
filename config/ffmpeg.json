@@ -1,0 +1,41 @@
+{
+  "_video": {
+    "copy": "-c:v copy",
+    "_encoder_libx264": "-c:v libx264",
+    "_pix_fmt": "-pix_fmt yuv420p",
+    "_profile": "-profile:v baseline",
+    "_mbuf": "-maxrate 2500k",
+    "_bufsize": "-bufsize 3470k",
+    "_movflag": "-movflags",
+    "+faststart": "+faststart"
+  },
+  "_audio": {
+    "copy": "-c:a copy",
+    "_encoder_acc": "-c:a aac"
+  },
+  "_hls": {
+    "_crf": "-crf 18",
+    "_presets": {
+      "ultrafast": "-preset ultrafast",
+      "veryfast": "-preset veryfast",
+      "fast": "-preset fast",
+      "medium": "-preset medium",
+      "slow": "-preset slow",
+      "veryslow": "-preset veryslow"
+    },
+    "_hls_time": {
+      "10": "-hls_time 10",
+      "20": "-hls_time 20",
+      "30": "-hls_time 30"
+    },
+    "_hls_wrap": {
+      "4": "-hls_wrap 4",
+      "10": "-hls_wrap 10"
+    },
+    "_start_time": {
+      "0": "-start_number 0",
+      "1": "-start_number 1"
+    }
+  },
+  "_strict": "-strict -2"
+}
